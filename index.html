@@ -41,13 +41,10 @@
     a { color: #007185; }
     button, input { font: inherit; }
     button { -webkit-tap-highlight-color: transparent; }
-    .page-shell { width: 100%; margin: 0 auto; background: #fff; }
-    .first-fold { width: 100%; min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
-    .first-fold > main { display: flex; flex-direction: column; flex: 1 0 auto; }
-    .first-fold > main > .hero { flex: 1 0 auto; }
+    .page-shell { width: 100%; min-height: 100vh; margin: 0 auto; background: #fff; position: relative; }
     .brandbar {
-      height: 48px;
-      padding: 0 32px;
+      height: auto;
+      padding: 14px 32px;
       background: var(--navy);
       color: #fff;
       display: flex;
@@ -61,7 +58,8 @@
     .brandbar__name { font-size: 20px; font-weight: 700; letter-spacing: -.2px; white-space: nowrap; }
     .brandbar__x { font-weight: 400; color: #d5d9d9; }
     .subbar {
-      height: 31px;
+      height: auto;
+      padding: 9px 0;
       background: var(--navy2);
       color: #fff;
       font-size: 13px;
@@ -121,7 +119,7 @@
     .gallery-dots { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 14px; }
     .gallery-dot { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; background: #d5d9d9; }
     .gallery-dot[aria-current="true"] { background: var(--active-dot); }
-    .offer-column { display: flex; flex-direction: column; max-width: 560px; min-width: 0; }
+    .offer-column { display: flex; flex-direction: column; max-width: 560px; min-width: 520px; }
     .product-title {
       margin: 0; color: var(--text); font-family: "Amazon Ember", Helvetica, Arial, sans-serif;
       font-size: 22px; line-height: 31px; font-weight: 500; letter-spacing: .1px; word-spacing: 1px;
@@ -185,7 +183,7 @@
     }
     .limited-banner img { position: relative; display: block; width: 100%; max-width: 1200px; height: auto; margin: 0 auto; }
     .footer { display: flex; flex-direction: column; background: var(--navy2); color: #d5d9d9; }
-    .newsletter { background: var(--navy2); padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .newsletter { background: var(--navy2); padding: 28px 32px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
     .newsletter__title { color: #fff; font-size: 16px; line-height: 1.25; font-weight: 700; text-align: center; }
     .newsletter-form { width: 100%; max-width: 460px; display: flex; gap: 8px; margin: 0; }
     .newsletter-form input {
@@ -222,20 +220,17 @@
     @media (min-width: 1024px) { body { min-width: 1040px; } }
     @media (max-width: 1023px) {
       body { background: var(--page); }
-      .page-shell { width: min(100%, 390px); min-width: 0; margin: 0 auto; background: #fff; }
-      .first-fold { height: 844px; min-height: 844px; display: flex; flex-direction: column; overflow: hidden; }
-      .first-fold > main { flex: 1 0 686px; }
-      .first-fold > main > .hero { flex: 0 0 686px; }
+      .page-shell { width: min(100%, 390px); min-width: 0; min-height: 100dvh; margin: 0 auto; background: #fff; }
       .brandbar { flex: 0 0 44px; height: 44px; padding: 14px 16px; }
       .brandbar__name { font-size: 14px; letter-spacing: -.1px; }
-      .subbar { flex: 0 0 31px; height: 31px; font-size: 13px; }
-      .subbar__inner { padding: 0 16px; }
+      .subbar { flex: 0 0 31px; height: 31px; padding: 0; font-size: 13px; }
+      .subbar__inner { padding: 0 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
       .hero {
-        flex: 0 0 686px; height: 686px; min-height: 686px; max-height: 686px;
+        flex: none; height: 686px; min-height: 686px; max-height: 686px;
         display: flex; flex-direction: column; align-items: stretch; gap: 0;
         padding: 22px 16px 20px; overflow: visible;
       }
-      .gallery-column { flex: 0 0 auto; }
+      .gallery-column { flex: none; width: 100%; }
       .gallery { width: min(300px, calc(100vw - 48px)); max-width: 300px; }
       .choice-badge { top: 8px; right: 8px; font-size: 11px; padding: 4px 7px; }
       .discount-ribbon { width: 110px; height: 110px; }
@@ -245,7 +240,7 @@
       .gallery-arrow--next { right: -24px; }
       .gallery-dots { gap: 6px; margin-top: 8px; }
       .gallery-dot { width: 8px; height: 8px; }
-      .offer-column { width: 100%; max-width: none; flex: 1 1 auto; }
+      .offer-column { width: 100%; max-width: none; min-width: 0; flex: none; }
       .product-title { font-size: 16px; line-height: 23px; margin: 8px 0 2px; }
       .price-row { margin-top: 10px; padding-top: 10px; gap: 8px; justify-content: center; }
       .price-discount { font-size: 24px; }
@@ -256,8 +251,8 @@
       .coupon-card { gap: 12px; padding: 8px 12px; }
       .coupon-badge { width: 66px; padding: 8px 0; font-size: 24px; }
       .coupon-copy { gap: 1px; }
-      .coupon-copy strong { font-size: 15px; }
-      .coupon-copy span { font-size: 12px; line-height: 1.25; }
+      .coupon-copy strong { font-size: 15px; line-height: 1.15; }
+      .coupon-copy span { font-size: 12px; line-height: 1.2; }
       .buy-button { flex: none; height: 46px; margin-top: 12px; border-radius: 23px; font-size: 16px; }
       .benefits { gap: 28px; margin-top: 6px; font-size: 11px; color: var(--muted-light); }
       .ticker { height: 40px; flex: 0 0 40px; font-size: 13px; letter-spacing: .3px; }
@@ -307,15 +302,13 @@
 <body>
   <!-- Meta Pixel noscript fallback -->
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1632582321547641&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
-  <div class="page-shell">
-    <div class="first-fold" id="first-fold">
+  <main class="page-shell">
       <header>
         <div class="brandbar"><div class="brandbar__inner"><div class="brandbar__name">RAW GRAVITY <span class="brandbar__x">×</span> TAKE MY MUFFIN</div></div></div>
         <div class="subbar"><div class="subbar__inner">Special Limited Edition · Official Collaboration</div></div>
       </header>
 
-      <main>
-        <section class="hero" aria-label="Take My Muffin Exclusive Edition offer">
+      <section class="hero" aria-label="Take My Muffin Exclusive Edition offer">
           <div class="gallery-column">
             <div class="gallery" aria-label="Product image gallery">
               <div class="gallery__viewport">
@@ -355,8 +348,7 @@
             <a class="buy-button buy-on-amazon" href="https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_F4C7C5F67E362A895EFCE264B192DFE0_afap_abs&amp;ref_=aa_maas&amp;tag=maas">Buy on Amazon</a>
             <div class="benefits"><span>Money back guaranty</span><span>Fast delivery</span></div>
           </div>
-        </section>
-      </main>
+      </section>
 
       <div class="ticker" aria-label="Product benefits">
         <div class="ticker__track">
@@ -376,7 +368,6 @@
           <div class="fact"><strong>INSTANT</strong><span>low-caffeine arabica</span></div>
         </div>
       </section>
-    </div>
 
     <section class="limited-banner" aria-label="Special Limited Edition">
       <div class="limited-banner__rays" aria-hidden="true"></div>
@@ -395,7 +386,7 @@
       </section>
       <div class="footer-bottom"><span>© 2026 Raw Gravity × Take My Muffin</span><span class="footer-break" aria-hidden="true"></span><span>Amazon is a trademark of Amazon.com, Inc.</span></div>
     </footer>
-  </div>
+  </main>
 
   <div class="redirect-overlay" id="redirect-overlay" aria-live="polite" hidden><div class="spinner" aria-hidden="true"></div><strong>Opening Amazon…</strong></div>
   <noscript><div class="noscript-note">Enable JavaScript to use the product gallery and email subscription form.</div></noscript>
